@@ -4,9 +4,9 @@
 <%@ page import = "java.util.*" %>
 <%
 	//로그인 되었는지 아닌지
-	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
+	Admin loginAdmin = (Admin)(session.getAttribute("loginAdmin"));
 
-	if(staffId == null){ //로그아웃 상태라면
+	if(loginAdmin == null){ //로그아웃 상태라면
 	//로그인 페이지로 리다이렉트
 		response.sendRedirect("/cashbook/loginForm.jsp");	
 		return;

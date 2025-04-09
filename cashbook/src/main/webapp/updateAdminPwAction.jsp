@@ -3,6 +3,11 @@
 <%@ page import = "model.*" %>
 <%@ page import = "java.util.*" %>
 <%
+	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
+	if (loginAdmin == null) {
+	    response.sendRedirect("/cashbook/loginForm.jsp");
+	    return;
+	}
 	String adminId = request.getParameter("adminId");
 	String currentPw = request.getParameter("currentPw");
 	String newPw = request.getParameter("newPw");
