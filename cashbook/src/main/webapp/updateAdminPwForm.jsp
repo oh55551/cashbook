@@ -2,14 +2,13 @@
 <%@ page import = "dto.*" %>
 <%@ page import = "model.*" %>
 <%@ page import = "java.util.*" %>
+<a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
+<a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
 <%
-	//로그인 되었는지 아닌지
-	Admin loginAdmin = (Admin)(session.getAttribute("loginAdmin"));
-
-	if(loginAdmin == null){ //로그아웃 상태라면
-	//로그인 페이지로 리다이렉트
-		response.sendRedirect("/cashbook/loginForm.jsp");	
-		return;
+	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
+	if (loginAdmin == null) {
+	    response.sendRedirect("/cashbook/loginForm.jsp");
+	    return;
 	}
 %>
 <!DOCTYPE html>
@@ -39,17 +38,17 @@
 			<tr>
 				<td>현재 비밀번호</td>
 				<td>
-					<input type="text" name="currentPw">
+					<input type="password" name="currentPw">
 				</td>
 			</tr>
 			<tr>
 				<td>변경할 비밀번호</td>
 				<td>
-					<input type="text" name="newPw">
+					<input type="password" name="newPw">
 				</td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-danger">변경</button>
+		<button type="submit" class="btn btn-sm btn-outline-secondary">변경</button>
 </form>
 </body>
 </html>

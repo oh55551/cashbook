@@ -18,8 +18,8 @@
 </head>
 <body>
 <form action="loginAction.jsp" method="post">
-	<h1>loginForm</h1>
-		<table class="table table-dark table-hover">
+	<h1>LOGIN</h1>
+		<table class="table table-bordered table-hover">
 			<tr>
 				<td>adminId</td>
 				<td>
@@ -29,11 +29,11 @@
 			<tr>
 				<td>adminPw</td>
 				<td>
-					<input type="text" name="adminPw">
+					<input type="password" name="adminPw">
 				</td>
 			</tr>
 		</table>
-	<button type="submit" class="btn btn-danger">로그인</button>
+	<button type="submit" class="btn btn-sm btn-outline-secondary">로그인</button>
 </form>
 </body>
 </html>

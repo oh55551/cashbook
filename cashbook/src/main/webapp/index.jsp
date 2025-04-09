@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dto.*" %>
+<a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
+<a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
 <%
 	//로그인 되었는지 아닌지
 	Admin loginAdmin = (Admin)(session.getAttribute("loginAdmin"));
@@ -23,16 +25,16 @@
 
 </head>
 <body>
-	<h1>로그인 성공!</h1>
+	<h2>메뉴</h2>
 	<ul>
 		<li>
-			<a href="/cashbook/logout.jsp" class="btn btn-danger">로그아웃</a>
+			<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-sm btn-outline-secondary">비밀번호 수정</a>
 		</li>
 		<li>
-			<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-danger">비밀번호 수정</a>
+			<a href="/cashbook/cashList.jsp" class="btn btn-sm btn-outline-secondary">cashList</a>
 		</li>
 		<li>
-			<a href="/cashbook/cashList.jsp" class="btn btn-danger">가계부</a>
+			<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">categoryList</a>
 		</li>
 	</ul>
 </body>
