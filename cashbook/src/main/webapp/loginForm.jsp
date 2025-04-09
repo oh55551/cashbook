@@ -35,6 +35,5 @@
 		</table>
 	<button type="submit" class="btn btn-danger">로그인</button>
 </form>
-<a href="/cashbook/updateAdminPwForm.jsp">비밀번호 변경</a>
 </body>
 </html>

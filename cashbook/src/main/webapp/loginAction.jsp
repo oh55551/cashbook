@@ -10,7 +10,7 @@
 	admin = adminDao.loginAdmin(adminId, adminPw);
 	
 	if(admin!=null){
-		response.sendRedirect("/cashbook/categoryList.jsp");
+		response.sendRedirect("/cashbook/index.jsp");
 	}else{
 		System.out.println("아이디 혹은 비밀번호가 일치하지않습니다."); 
 		response.sendRedirect("/cashbook/loginForm.jsp");

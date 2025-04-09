@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "dto.*" %>
-<%@ page import = "model.*" %>
-<%@ page import = "java.util.*" %>
 <%
 	//로그인 되었는지 아닌지
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
@@ -17,8 +14,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-	<title>pollList</title>
-	
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -27,29 +22,14 @@
 
 </head>
 <body>
-<form action="updateAdminPwAction.jsp" method="post">
-	<h1>updatePw</h1>
-		<table class="table table-dark table-hover">
-			<tr>
-				<td>adminId</td>
-				<td>
-					<input type="text" name="adminId">
-				</td>
-			</tr>
-			<tr>
-				<td>현재 비밀번호</td>
-				<td>
-					<input type="text" name="currentPw">
-				</td>
-			</tr>
-			<tr>
-				<td>변경할 비밀번호</td>
-				<td>
-					<input type="text" name="newPw">
-				</td>
-			</tr>
-		</table>
-		<button type="submit" class="btn btn-danger">변경</button>
-</form>
+	<h1>로그인 성공!</h1>
+	<ul>
+		<li>
+			<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-danger">비밀번호 수정</a>
+		</li>
+		<li>
+			<a href="/cashbook/cashList.jsp" class="btn btn-danger">가계부</a>
+		</li>
+	</ul>
 </body>
 </html>
