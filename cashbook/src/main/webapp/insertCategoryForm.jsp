@@ -3,8 +3,8 @@
 <%@ page import = "model.*" %>
 <%@ page import = "java.util.*" %>
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
-<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리리스트</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리리스트</a>
 <!DOCTYPE html>
 <html>
 <head>

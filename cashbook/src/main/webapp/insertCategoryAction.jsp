@@ -28,8 +28,15 @@
 
     // DB에 저장
     CategoryDao categoryDao = new CategoryDao();
-    categoryDao.insertCategory(category);
-
-    // 목록 페이지로 이동
-    response.sendRedirect("/cashbook/categoryList.jsp");
+    
+ 	// 여기서 'result'에 0 또는 pk가 들어옴
+    int result = categoryDao.insertCategory(category); 
+    if (result == 0) {
+        // 중복된 title일 경우 다시 입력 폼으로
+    	response.sendRedirect("/cashbook/insertCategoryForm.jsp");
+    	return;
+    } else {
+        // 정상 등록된 경우
+        response.sendRedirect("/cashbook/categoryList.jsp");
+    }
 %>

@@ -15,6 +15,19 @@ public class CategoryDao {
 	public int updateCategoryTitle(int categoryNo, String newTitle) throws Exception {
 	    Class.forName("com.mysql.cj.jdbc.Driver");
 	    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+		
+	    //같은값 못넣게하기
+		String sql2 = "SELECT COUNT(*) FROM category WHERE title = ?";
+	    PreparedStatement Stmt2 = conn.prepareStatement(sql2);
+	    Stmt2.setString(1, newTitle);
+	    ResultSet rs2 = Stmt2.executeQuery();
+	    rs2.next();
+	    int count = rs2.getInt(1);
+	    if (count > 0) {
+	        conn.close();
+	        return 0; // 0이면 insert 안 됐다고 처리
+	    }
+	    
 	    String sql = "UPDATE category SET title = ? WHERE category_no = ?";
 	    PreparedStatement stmt = conn.prepareStatement(sql);
 	    stmt.setString(1, newTitle);
@@ -43,6 +56,20 @@ public class CategoryDao {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook","root","java1234");
 		PreparedStatement stmt = null;
+		
+		//같은값 못넣게하기
+		String sql2 = "SELECT COUNT(*) FROM category WHERE title = ? and kind = ?";
+	    PreparedStatement Stmt2 = conn.prepareStatement(sql2);
+	    Stmt2.setString(1, category.getTitle());
+	    Stmt2.setString(2, category.getKind());
+	    ResultSet rs2 = Stmt2.executeQuery();
+	    rs2.next();
+	    int count = rs2.getInt(1);
+	    if (count > 0) {
+	        conn.close();
+	        return 0; // 0이면 insert 안 됐다고 처리
+	    }
+	    
 		String sql = "insert into category(kind, title, createdate) values(?,?,?)";
 		stmt=conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		stmt.setString(1, category.getKind());

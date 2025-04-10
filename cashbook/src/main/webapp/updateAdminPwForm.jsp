@@ -28,7 +28,7 @@
 <body>
 <form action="updateAdminPwAction.jsp" method="post">
 	<h1>updatePw</h1>
-		<table class="table table-dark table-hover">
+		<table class="table table-bordered table-hover">
 			<tr>
 				<td>adminId</td>
 				<td>

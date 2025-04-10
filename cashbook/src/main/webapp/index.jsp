@@ -2,6 +2,7 @@
 <%@ page import="dto.*" %>
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-sm btn-outline-secondary">비밀번호 수정</a>
 <%
 	//로그인 되었는지 아닌지
 	Admin loginAdmin = (Admin)(session.getAttribute("loginAdmin"));
@@ -22,20 +23,32 @@
 	
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Google Font: Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<style>
+    body, html {
+        height: 100%;
+    }
 
+    .menu-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 24px;
+        font-weight: 500;
+    }
+</style>
 </head>
 <body>
-	<h2>메뉴</h2>
+	<h4 class="text-center mb-4 menu-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
 	<ul>
-		<li>
-			<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-sm btn-outline-secondary">비밀번호 수정</a>
-		</li>
-		<li>
-			<a href="/cashbook/cashList.jsp" class="btn btn-sm btn-outline-secondary">cashList</a>
-		</li>
-		<li>
-			<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">categoryList</a>
-		</li>
+		<div class="text-center mb-4 menu-title">
+			<a href="/cashbook/cashList.jsp" class="btn btn btn-outline-secondary">캐시</a>
+		</div>
+		<div class="text-center mb-4 menu-title">
+			<a href="/cashbook/categoryList.jsp" class="btn btn btn-outline-secondary">카테고리</a>
+		</div>
+		<div class="text-center mb-4 menu-title">
+			<a href="/cashbook/monthList.jsp" class="btn btn btn-outline-secondary">달력</a>
+		</div>
 	</ul>
 </body>
 </html>

@@ -37,10 +37,10 @@
 <table class="table table-bordered table-hover">
         <tr>
             <th>No</th>
-            <th>종류(kind)</th>
-            <th>제목(title)</th>
-            <th>생성일</th>
-            <th>제목 수정</th>
+            <th>수입/지출</th>
+            <th>내역</th>
+            <th>작성시간</th>
+            <th>내역명 수정</th>
             <th>삭제</th>
         </tr>
         <%
