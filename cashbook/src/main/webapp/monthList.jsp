@@ -2,9 +2,11 @@
 <%@ page import = "dto.*" %>
 <%@ page import = "model.*" %>
 <%@ page import = "java.util.*" %>
+<hr>
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
-<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리리스트</a>
+<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
+<hr>
 <%
 	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
 	if (loginAdmin == null) {
@@ -53,7 +55,7 @@
 
 <h3 class="mt-3"><%= year %>년 <%= month + 1 %>월</h3>
 
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover" style="table-layout: fixed;">
 		<tr>
 			<th style="color:red">일</th>
 			<th>월</th>
@@ -76,13 +78,18 @@
 			} else {
 			int day = i - startBlank;
 	%>
-			<div><strong><%= day %></strong></div>
+			<div>
+			<strong>
+			<a href="/cashbook/dateList.jsp?year=<%= year %>&month=<%= month + 1 %>&day=<%= day %>">
+			<%= day %>
+			</strong>
+			</div>
 	<%
 			ArrayList<HashMap<String, Object>> dayList = cashMap.get(day);
 			if (dayList != null) {
 				for (HashMap<String, Object> cash : dayList) {
 	%>
-					<div>
+					<div style="font-size: 12px; color: <%= cash.get("color") %>;">
 						[<%= cash.get("category_title") %>] <%= cash.get("amount") %>원
 					</div>
 	<%

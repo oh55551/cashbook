@@ -2,8 +2,11 @@
 <%@ page import="java.util.*" %>
 <%@ page import="dto.*" %>
 <%@ page import="model.*" %>
+<hr>
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+<a href="/cashbook/monthList.jsp" class="btn btn-sm btn-outline-secondary">달력</a>
+<hr>
 <%
 	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
 	if (loginAdmin == null) {

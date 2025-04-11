@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dto.*" %>
+<hr>
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
-<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-sm btn-outline-secondary">비밀번호 수정</a>
+<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
+<a href="/cashbook/monthList.jsp" class="btn btn-sm btn-outline-secondary">달력</a>
+<hr>
 <%
 	//로그인 되었는지 아닌지
 	Admin loginAdmin = (Admin)(session.getAttribute("loginAdmin"));
@@ -38,16 +41,14 @@
 </style>
 </head>
 <body>
+
 	<h4 class="text-center mb-4 menu-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
 	<ul>
 		<div class="text-center mb-4 menu-title">
-			<a href="/cashbook/cashList.jsp" class="btn btn btn-outline-secondary">캐시</a>
+			<a href="/cashbook/categoryList.jsp" class="btn btn btn-outline-secondary">수입/지출 리스트</a>
 		</div>
 		<div class="text-center mb-4 menu-title">
-			<a href="/cashbook/categoryList.jsp" class="btn btn btn-outline-secondary">카테고리</a>
-		</div>
-		<div class="text-center mb-4 menu-title">
-			<a href="/cashbook/monthList.jsp" class="btn btn btn-outline-secondary">달력</a>
+			<a href="/cashbook/monthList.jsp" class="btn btn btn-outline-secondary">가계부</a>
 		</div>
 	</ul>
 </body>

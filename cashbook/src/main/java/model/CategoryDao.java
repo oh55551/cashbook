@@ -11,6 +11,28 @@ import java.util.*;
 import dto.*;
 
 public class CategoryDao {
+	
+	public ArrayList<Category> selectCategoryListByKind(String kind) throws Exception {
+	    ArrayList<Category> list = new ArrayList<>();
+	    
+	    Class.forName("com.mysql.cj.jdbc.Driver");
+	    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+
+	    String sql = "SELECT category_no, title FROM category where kind=?";
+	    PreparedStatement stmt = conn.prepareStatement(sql);
+	    stmt.setString(1, kind);
+
+	    ResultSet rs = stmt.executeQuery();
+	    while (rs.next()) {
+	        Category c = new Category();
+	        c.setCategory_no(rs.getInt("category_no"));
+	        c.setTitle(rs.getString("title"));
+	        list.add(c);
+	    }
+	    conn.close();
+	    return list;
+	}
+	
 	//updateTitle
 	public int updateCategoryTitle(int categoryNo, String newTitle) throws Exception {
 	    Class.forName("com.mysql.cj.jdbc.Driver");
