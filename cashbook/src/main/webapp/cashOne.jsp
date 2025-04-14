@@ -15,9 +15,12 @@
 		  return;
 	}
 	
-	String cashDate = request.getParameter("cashDate");
+	int cashNo = Integer.parseInt(request.getParameter("cash_no"));
 	CashDao cashDao = new CashDao();
-	HashMap<String, Object> m = cashDao.cashOne(cashDate);
+	HashMap<String, Object> m = cashDao.cashOneByNo(cashNo);
+	ReceitDao receitDao = new ReceitDao();
+	Receit receit = receitDao.selectReceitByCashNo(cashNo);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -66,6 +69,28 @@
 			<td><%= m.get("updatedate") %></td>
 		</tr>
 	</table>
+	<form action="/cashbook/insertReceitForm.jsp">
+	<input type="hidden" name="cash_no" value="<%= cashNo %>">
+	<button type="submit" class="btn btn-sm btn-outline-secondary">영수증 입력</button>
+	</form>
+	<form action="/cashbook/deleteReceit.jsp">
+	<input type="hidden" name="cash_no" value="<%= cashNo %>">
+	<button type="submit" class="btn btn-sm btn-outline-secondary">영수증 삭제</button>
+	</form>
+	
+<% 
+	if (receit != null) { 
+%>
+	<h5>영수증 이미지</h5>
+	<img src="<%= request.getContextPath() + "/upload/" + receit.getFilename() %>" 
+	     style="max-width: 400px; border: 1px solid #ddd; padding: 5px;">
+<% 
+	} else { 
+%>
+	<p>영수증 이미지가 등록되지 않았습니다.</p>
+<% 
+	} 
+%>
 	
 </body>
 </html>

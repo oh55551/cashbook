@@ -61,7 +61,7 @@
 			<td><%=c.get("title") %></td>
 			<td><%=c.get("amount") %> 원</td>
 			<td><%=c.get("createdate") %></td>
-			<td><a href="/cashbook/cashOne.jsp?cashDate=<%=cashDate%>">상세보기</a></td>
+			<td><a href="/cashbook/cashOne.jsp?cash_no=<%=c.get("cash_no")%>">상세보기</a></td>
 			<td><a href="/cashbook/updateCashForm.jsp?cash_no=<%=c.get("cash_no")%>&cashDate=<%=cashDate%>">수정</td>
 			<td><a href="/cashbook/deleteCash.jsp?cashDate=<%=cashDate%>&cash_no=<%=c.get("cash_no")%>">삭제</a></td>
 		</tr>
