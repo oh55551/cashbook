@@ -7,6 +7,7 @@
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
 <a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
 <a href="/cashbook/monthList.jsp" class="btn btn-sm btn-outline-secondary">달력</a>
+<a href="/cashbook/summaryList.jsp" class="btn btn-sm btn-outline-secondary">통계</a>
 <hr>
 <%
 	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
@@ -43,7 +44,7 @@
 <table class="table table-bordered table-hover">
 	<input type="hidden" name="cashDate" value="<%= cashDate %>">
 		<tr>
-			<th>kind</th>
+			<th>구분</th>
 			<td>
 				<select name="kind" class="form-select" onchange="this.form.action='/cashbook/updateCashForm.jsp'; this.form.submit();">
 					<option value="수입" <%= "수입".equals(kind) ? "selected" : "" %>>수입</option>
@@ -52,18 +53,18 @@
 			</td>
 		</tr>
 		<tr>
-			<th>cashNo</th>
+			<th>캐시번호</th>
 			<td>
 				<input type="hidden" name="cash_no" value="<%= m.get("cash_no") %>">
 				<%= m.get("cash_no") %>
 			</td>
 		</tr>
 		<tr>
-			<th>categoryNo</th>
+			<th>카테고리번호</th>
 			<td><input type="text" name="category_no" value="<%= m.get("category_no") %>" class="form-control" readonly></td>
 		</tr>
 		<tr>
-			<th>title</th>
+			<th>분류</th>
 			<td>
 				<select name="title" class="form-select">
 				<%
@@ -80,23 +81,23 @@
 			</td>
 		</tr>
 		<tr>
-			<th>amount</th>
+			<th>총액</th>
 			<td><input type="number" name="amount" value="<%= m.get("amount") %>" class="form-control"></td>
 		</tr>
 		<tr>
-			<th>memo</th>
+			<th>메모</th>
 			<td><input type="text" name="memo" value="<%= m.get("memo") %>" class="form-control"></td>
 		</tr>
 		<tr>
-			<th>color</th>
+			<th>색상</th>
 			<td><input type="color" name="color" value="<%= m.get("color") %>" class="form-control form-control-color"></td>
 		</tr>
 		<tr>
-			<th>createdate</th>
+			<th>등록일</th>
 			<td><%= m.get("createdate") %></td>
 		</tr>
 		<tr>
-			<th>updatedate</th>
+			<th>업데이트</th>
 			<td><%= m.get("updatedate") %></td>
 		</tr>
 		<tr>

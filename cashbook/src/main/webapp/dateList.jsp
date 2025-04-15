@@ -7,6 +7,7 @@
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
 <a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
 <a href="/cashbook/monthList.jsp" class="btn btn-sm btn-outline-secondary">달력</a>
+<a href="/cashbook/summaryList.jsp" class="btn btn-sm btn-outline-secondary">통계</a>
 <hr>
 <%
 	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
@@ -32,7 +33,6 @@
 	//DB불러오기
 	CashDao cashDao = new CashDao();
 	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByDate(cashDate);
-
 %>
 <!DOCTYPE html>
 <html>
@@ -49,18 +49,22 @@
 			<th>분류</th>
 			<th>금액</th>
 			<th>작성일시</th>
+			<th>영수증 유무</th>			
 			<th>상세보기</th>
 			<th>수정</th>
 			<th>삭제</th>
 		</tr>
 	<%
 		for (HashMap<String, Object> c : list) {
+			int cashNo = (Integer) c.get("cash_no");
+	        boolean hasReceit = cashDao.hasReceit(cashNo); 
 	%>
 		<tr>
 			<td><%=c.get("kind") %></td>
 			<td><%=c.get("title") %></td>
 			<td><%=c.get("amount") %> 원</td>
 			<td><%=c.get("createdate") %></td>
+			<td><%= hasReceit ? "✅" : "❌" %></td>
 			<td><a href="/cashbook/cashOne.jsp?cash_no=<%=c.get("cash_no")%>">상세보기</a></td>
 			<td><a href="/cashbook/updateCashForm.jsp?cash_no=<%=c.get("cash_no")%>&cashDate=<%=cashDate%>">수정</td>
 			<td><a href="/cashbook/deleteCash.jsp?cashDate=<%=cashDate%>&cash_no=<%=c.get("cash_no")%>">삭제</a></td>

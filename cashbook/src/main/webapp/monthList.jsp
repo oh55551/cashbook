@@ -6,6 +6,7 @@
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
 <a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
+<a href="/cashbook/summaryList.jsp" class="btn btn-sm btn-outline-secondary">통계</a>
 <hr>
 <%
 	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
@@ -51,11 +52,37 @@
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    table.calendar {
+        table-layout: fixed;
+        width: 70%;
+    }
+    table.calendar th, table.calendar td {
+        height: 70px;
+        vertical-align: top;
+        padding: 5px;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+    table.calendar a {
+        text-decoration: none;
+        color: black;
+    }
+    .date-number {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .cash-entry {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+</style>
 <body>
 
 <h3 class="mt-3"><%= year %>년 <%= month + 1 %>월</h3>
 
-	<table class="table table-bordered table-hover" style="table-layout: fixed;">
+	<table class="table table-bordered calendar" style="table-layout: fixed;">
 		<tr>
 			<th style="color:red">일</th>
 			<th>월</th>

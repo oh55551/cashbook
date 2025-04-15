@@ -5,7 +5,9 @@
 <hr>
 <a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
 <a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
-<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리리스트</a>
+<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
+<a href="/cashbook/monthList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
+<a href="/cashbook/summaryList.jsp" class="btn btn-sm btn-outline-secondary">통계</a>
 <hr>
 <!DOCTYPE html>
 <html>

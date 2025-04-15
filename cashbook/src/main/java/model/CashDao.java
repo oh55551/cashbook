@@ -5,6 +5,131 @@ import java.util.*;
 import dto.*;
 
 public class CashDao {
+	public boolean hasReceit(int cashNo) throws Exception {
+	    Class.forName("com.mysql.cj.jdbc.Driver");
+	    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+
+	    String sql = "SELECT COUNT(*) FROM receit WHERE cash_no = ?";
+	    PreparedStatement stmt = conn.prepareStatement(sql);
+	    stmt.setInt(1, cashNo);
+	    ResultSet rs = stmt.executeQuery();
+
+	    boolean result = false;
+	    if (rs.next()) {
+	        result = rs.getInt(1) > 0; // 1 이상이면 true
+	    }
+
+	    conn.close();
+	    return result;
+	}
+	
+	public ArrayList<HashMap<String, Object>> cashAmountBySelect(int year, int month) throws Exception {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+
+		String sql = "SELECT kind, COUNT(*) as cnt , SUM(amount) as sumAmount "
+				+ "	 FROM category ct INNER JOIN cash cs "
+				+ "	 ON ct.category_no = cs.category_no "
+				+ "	 WHERE YEAR(cash_date) = ? AND MONTH(cash_date) = ? "
+				+ "	 GROUP BY month(cash_date), ct.kind "
+				+ "	 ORDER BY month(cash_date)";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, year);
+		stmt.setInt(2, month);
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+		    HashMap<String, Object> map = new HashMap<>();
+		    map.put("kind", rs.getString("kind"));
+		    map.put("cnt", rs.getInt("cnt"));
+		    map.put("sumAmount", rs.getInt("sumAmount"));
+		    list.add(map);
+		}
+
+		conn.close();
+		return list;
+	}
+	
+	
+	public ArrayList<HashMap<String, Object>> cashAmountByMonth(int month) throws Exception {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+
+		String sql = "SELECT month(cash_date), kind, COUNT(*) as cnt , SUM(amount) as sumAmount "
+				+ "	 FROM category ct INNER JOIN cash cs "
+				+ "	 ON ct.category_no = cs.category_no "
+				+ "  where month(cash_date) = ? "
+				+ "	 GROUP BY month(cash_date), ct.kind "
+				+ "	 ORDER BY month(cash_date)";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, month);
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+		    HashMap<String, Object> map = new HashMap<>();
+		    map.put("kind", rs.getString("kind"));
+		    map.put("cnt", rs.getInt("cnt"));
+		    map.put("sumAmount", rs.getInt("sumAmount"));
+		    list.add(map);
+		}
+
+		conn.close();
+		return list;
+	}
+	
+	
+	public ArrayList<HashMap<String, Object>> cashAmountByYear(int year) throws Exception {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+
+		String sql = "SELECT year(cash_date), kind, COUNT(*) as cnt , SUM(amount) as sumAmount "
+				+ "	 FROM category ct INNER JOIN cash cs "
+				+ "	 ON ct.category_no = cs.category_no "
+				+ "  where year(cash_date) = ? "
+				+ "	 GROUP BY year(cash_date), ct.kind "
+				+ "	 ORDER BY year(cash_date) asc";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, year);
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+		    HashMap<String, Object> map = new HashMap<>();
+		    map.put("kind", rs.getString("kind"));
+		    map.put("cnt", rs.getInt("cnt"));
+		    map.put("sumAmount", rs.getInt("sumAmount"));
+		    list.add(map);
+		}
+
+		conn.close();
+		return list;
+	}
+	
+	public ArrayList<HashMap<String, Object>> cashAmount() throws Exception {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
+
+		String sql = "SELECT kind, COUNT(*) AS cnt, SUM(amount) AS sumAmount " +
+		             "FROM category ct INNER JOIN cash cs ON ct.category_no = cs.category_no " +
+		             "GROUP BY ct.kind";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+		    HashMap<String, Object> map = new HashMap<>();
+		    map.put("kind", rs.getString("kind"));
+		    map.put("cnt", rs.getInt("cnt"));
+		    map.put("sumAmount", rs.getInt("sumAmount"));
+		    list.add(map);
+		}
+
+		conn.close();
+		return list;
+	}
+	
 	public HashMap<String, Object> cashOneByNo(int cashNo) throws Exception{
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		Class.forName("com.mysql.cj.jdbc.Driver");
