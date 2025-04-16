@@ -235,30 +235,6 @@ public class CashDao {
 	    return row;
 	}
 	
-	public HashMap<String, Object> cashOne(String date) throws Exception{
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cashbook", "root", "java1234");
-		String sql = "SELECT ct.kind, ct.title, c.amount, c.memo, c.createdate, c.color, c.updatedate, c.category_no, c.cash_no " +
-                "FROM cash c " +
-                "INNER JOIN category ct ON c.category_no = ct.category_no " +
-                "WHERE DATE(c.cash_date) = ?";
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, date);
-		ResultSet rs = stmt.executeQuery();
-		while(rs.next()) {
-			map.put("cash_no", rs.getInt("cash_no"));
-	        map.put("category_no", rs.getInt("category_no"));
-	        map.put("kind", rs.getString("kind"));
-	        map.put("title", rs.getString("title"));
-	        map.put("amount", rs.getInt("amount"));
-	        map.put("memo", rs.getString("memo"));
-	        map.put("color", rs.getString("color"));
-	        map.put("createdate", rs.getString("createdate"));
-	        map.put("updatedate", rs.getString("updatedate"));
-		}
-		return map;	
-	}
 	public ArrayList<HashMap<String, Object>> selectCashListByDate(String date) throws Exception {
 	    ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 	    Class.forName("com.mysql.cj.jdbc.Driver");

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dto.*" %>
+<div class="top-nav">
 <hr>
-<a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+	<a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+	<a href="/cashbook/updateAdminPwForm.jsp" class="btn btn-sm btn-outline-secondary">비밀번호변경</a>
 <hr>
+</div>
 <%
 	//로그인 되었는지 아닌지
 	Admin loginAdmin = (Admin)(session.getAttribute("loginAdmin"));
@@ -26,28 +29,77 @@
 <!-- Google Font: Poppins -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 <style>
-    body, html {
-        height: 100%;
+    body {
+        background-color: #f0f8ff; /* 연한 하늘색 배경 */
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 40px;
     }
 
-    .menu-title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 24px;
-        font-weight: 500;
+    table {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        width: 80%;
+        text-align: center;
+    }
+
+    th {
+        background-color: #e6f2ff; /* 연하늘색 */
+        color: #004080;
+        text-align: center;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+
+    a.btn, button {
+        margin: 4px;
+        background-color: #cce6ff;
+        color: #003366;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+    }
+
+    a.btn:hover, button:hover {
+        background-color: #99ccff;
+        color: #002244;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    hr {
+        width: 80%;
+        border-top: 2px solid #b3d9ff;
+    }
+
+    .top-nav a {
+        margin: 0 10px;
     }
 </style>
 </head>
 <body>
 
-	<h4 class="text-center mb-4 menu-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
+	<h4 class="text-center mb-4 menu-title">MENU</h4>
 	<ul>
-		<div class="text-center mb-4 menu-title">
-			<a href="/cashbook/categoryList.jsp" class="btn btn btn-outline-secondary">카테고리</a>
-		</div>
-		<div class="text-center mb-4 menu-title">
+		<div class="btn">
 			<a href="/cashbook/monthList.jsp" class="btn btn btn-outline-secondary">달력</a>
 		</div>
-		<div class="text-center mb-4 menu-title">
+		<div class="btn">
+			<a href="/cashbook/categoryList.jsp" class="btn btn btn-outline-secondary">카테고리</a>
+		</div>
+		<div class="btn">
 			<a href="/cashbook/summaryList.jsp" class="btn btn btn-outline-secondary">통계</a>
 		</div>
 	</ul>

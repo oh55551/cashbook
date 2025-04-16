@@ -2,12 +2,14 @@
 <%@ page import = "dto.*" %>
 <%@ page import = "model.*" %>
 <%@ page import = "java.util.*" %>
-<hr>
-<a href="/cashbook/index.jsp" class="btn btn-sm btn-outline-secondary">홈화면으로</a>
-<a href="/cashbook/logout.jsp" class="btn btn-sm btn-outline-secondary">로그아웃</a>
-<a href="/cashbook/categoryList.jsp" class="btn btn-sm btn-outline-secondary">카테고리</a>
-<a href="/cashbook/summaryList.jsp" class="btn btn-sm btn-outline-secondary">통계</a>
-<hr>
+<div class="top-nav">
+    <hr>
+    <a href="/cashbook/index.jsp" class="btn btn-sm">홈화면으로</a>
+    <a href="/cashbook/logout.jsp" class="btn btn-sm">로그아웃</a>
+    <a href="/cashbook/categoryList.jsp" class="btn btn-sm">카테고리</a>
+    <a href="/cashbook/summaryList.jsp" class="btn btn-sm">통계</a>
+    <hr>
+</div>
 <%
 	Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
 	if (loginAdmin == null) {
@@ -53,29 +55,104 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-    table.calendar {
-        table-layout: fixed;
-        width: 70%;
+    body {
+        background-color: #f0f8ff; /* 연하늘색 배경 */
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
     }
-    table.calendar th, table.calendar td {
-        height: 70px;
+
+    .top-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .top-nav a {
+        margin: 0 10px;
+        background-color: #cce6ff;
+        color: #003366;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+    }
+
+    .top-nav a:hover {
+        background-color: #99ccff;
+        color: #002244;
+    }
+
+    hr {
+        width: 80%;
+        border-top: 2px solid #b3d9ff;
+    }
+
+    h3 {
+        color: #004080;
+        margin-bottom: 20px;
+    }
+
+    table.calendar {
+        width: 80%;
+        table-layout: fixed;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    table.calendar th {
+        background-color: #e6f2ff;
+        color: #004080;
+        height: 50px;
+        text-align: center;
+    }
+
+    table.calendar td {
+        height: 100px;
         vertical-align: top;
         padding: 5px;
-        overflow: hidden;
         word-wrap: break-word;
+        text-align: left;
     }
-    table.calendar a {
+
+    .calendar a {
+        color: #004080;
+        font-weight: bold;
         text-decoration: none;
-        color: black;
     }
+
+    .calendar a:hover {
+        text-decoration: underline;
+    }
+
     .date-number {
         font-weight: bold;
-        display: block;
         margin-bottom: 5px;
     }
+
     .cash-entry {
         font-size: 12px;
         margin-bottom: 2px;
+    }
+
+    .mb-3 {
+        margin-top: 20px;
+    }
+
+    .mb-3 a {
+        background-color: #cce6ff;
+        color: #003366;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+    }
+
+    .mb-3 a:hover {
+        background-color: #99ccff;
+        color: #002244;
     }
 </style>
 <body>
